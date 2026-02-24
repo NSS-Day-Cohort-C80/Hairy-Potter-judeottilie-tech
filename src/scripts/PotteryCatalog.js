@@ -1,12 +1,19 @@
+let soldPottery = []
 
-export function toSellOrNotToSell (wheelPottery, kilnTemperature) {         
-    wheelPottery.fired = true;
+export function toSellOrNotToSell (firedPottery) {         
     
-    if (kilnTemperature > 2200) {
-        wheelPottery.cracked = true;
-    } else {
-        wheelPottery.cracked = false;
+    if (firedPottery.cracked === false) {
+        if (firedPottery.weight >= 6) {
+            firedPottery.price = 40;
+        } else {
+            firedPottery.price = 20;
+        }
+        soldPottery.push(firedPottery);
     }
 
-    return wheelPottery;
+    return firedPottery;
+}
+
+export function usePottery () {
+    return JSON.parse(JSON.stringify(soldPottery));
 }
